@@ -1,0 +1,91 @@
+@mixin font-family($face, $weight) {
+    font-family: $face;
+    font-weight: $weight;
+}
+
+@mixin font-detail($font-size-value, $line-height-value) {
+    font-size: $font-size-value;
+    line-height: $line-height-value;
+}
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -o-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin opacity($opacity) {
+    -webkit-opacity: $opacity;
+    -moz-opacity: $opacity;
+    -o-opacity: $opacity;
+    -ms-opacity: $opacity;
+    opacity: $opacity;
+}
+
+@mixin transition($seconds, $timing: ease) {
+    -webkit-transition: all $seconds ease;
+    -moz-transition: all $seconds ease;
+    -ms-transition: all $seconds ease;
+    -o-transition: all $seconds ease;
+    transition: all $seconds $timing;
+}
+
+@mixin transform($property) {
+    -o-transform: $property;
+    -webkit-transform: $property;
+    -ms-transform: $property;
+    -moz-transform: $property;
+    transform: $property;
+}
+
+@mixin flexbox {
+    display: -ms-flex;
+    display: -webkit-flex;
+    display: flex;
+}
+
+@mixin text-shadow($x-axis, $y-axis, $blur, $color) {
+    -ms-text-shadow: $x-axis $y-axis $blur $color;
+    -o-text-shadow: $x-axis $y-axis $blur $color;
+    -webkit-text-shadow: $x-axis $y-axis $blur $color;
+    -moz-text-shadow: $x-axis $y-axis $blur $color;
+    text-shadow: $x-axis $y-axis $blur $color;
+}
+
+@mixin box-shadow($x-axis, $y-axis, $blur, $color) {
+    -ms-box-shadow: $x-axis $y-axis $blur $color;
+    -o-box-shadow: $x-axis $y-axis $blur $color;
+    -webkit-box-shadow: $x-axis $y-axis $blur $color;
+    -moz-box-shadow: $x-axis $y-axis $blur $color;
+    box-shadow: $x-axis $y-axis $blur $color;
+}
+
+@mixin box-shadow-none {
+    -ms-box-shadow: none;
+    -o-box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+@mixin box($property) {
+    box-sizing: $property;
+    -moz-box-sizing: $property;
+    -webkit-box-sizing: $property;
+    -o-box-sizing: $property;
+}
+
+@mixin text-clamp($line) {
+    display: -webkit-box;
+    -webkit-line-clamp: $line;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    width: 100%;
+}
+
+@mixin mq($size) {
+    @media only screen and (min-width: $size) {
+        @content;
+    }
+}
