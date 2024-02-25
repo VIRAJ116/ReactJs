@@ -5,7 +5,22 @@ function VideoItem({ video }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const [showPlayPause, setShowPlayPause] = useState(false);
+  const [progress, setProgress] = useState(0);
   const videoRef = useRef(null);
+
+  useEffect(() => {
+    const updateProgress = () => {
+      const currentTime = videoRef.current.currentTime;
+      const duration = videoRef.current.duration;
+      const progressPercent = (currentTime / duration) * 100;
+      setProgress(progressPercent);
+    };
+
+    if (isPlaying) {
+      const interval = setInterval(updateProgress, 1000); // Update progress every second
+      return () => clearInterval(interval);
+    }
+  }, [isPlaying]);
 
   const handleClick = (e) => {
     if (isPlaying) {
@@ -25,9 +40,9 @@ function VideoItem({ video }) {
     }
   };
 
-  const handleLike = () => {    
+  const handleLike = () => {
     setIsLiked((liked) => !liked);
-  }
+  };
 
   const fromattedSubs = formatSubscribers(video.subscriber);
   return (
@@ -47,12 +62,19 @@ function VideoItem({ video }) {
         <p className='description'>{video.description}</p>
       </div>
       <span className={`play-pause ${showPlayPause ? '' : 'hide-playpause'}`}>
-        {!isPlaying && <i className="fa-solid fa-play"></i>}
-        {isPlaying && <i className="fa-solid fa-pause"></i>}
+        {!isPlaying && <i className='fa-solid fa-play'></i>}
+        {isPlaying && <i className='fa-solid fa-pause'></i>}
       </span>
-      <span className={`like-video ${isLiked ? 'liked' : ''}`} role='button' onClick={handleLike}>
+      <span
+        className={`like-video ${isLiked ? 'liked' : ''}`}
+        role='button'
+        onClick={handleLike}
+      >
         <i className='fa-solid fa-thumbs-up'></i>
       </span>
+      <div className='progrss-bar-box'>
+        <div className='progress-bar' style={{ width: `${progress}%` }}></div>
+      </div>
     </li>
   );
 }
