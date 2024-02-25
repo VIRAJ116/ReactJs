@@ -1,105 +1,120 @@
-@import "../css/common/mixin";
+@import '../css/common/mixin';
 
 ul {
+  @include flexbox;
+  flex-direction: column;
+  row-gap: 20px;
+  padding: 50px 0;
+  scroll-snap-align: start;
+  li {
     @include flexbox;
+    border: 1px solid gray;
+    @include border-radius(20px);
     flex-direction: column;
-    row-gap: 20px;
-    padding: 50px 0;
-    scroll-snap-align: start;
-    li {
-        @include flexbox;
-        border: 1px solid gray;
-        @include border-radius(20px);
-        flex-direction: column;
-        position: relative;
-        video {
-            max-width: 450px;
-            width: 100%;
-            height: 90vh;
-            object-fit: cover;
-            @include border-radius(20px);
-            margin: auto 0;
-        }
-        .video-info {
-            position: absolute;
-            bottom: 20px;
-            padding: 0 16px;
-            @include text-clamp(1);
-            .title-sub-wrapper {
-                @include flexbox;
-                align-items: center;
-                justify-content: flex-start;
-                margin:  0 0 4px 0;
-                h2 {
-                    flex: 1;
-                    line-height: 100%;
-                }
-                .subscribers {
-                    display: inline-block;
-                    border: 1px solid transparent;
-                    background: rgba(255, 2555, 255, 0.1);
-                    @include border-radius(20px);
-                    padding: 4px 10px;
-                    width: fit-content;
-                }
-            }
-            p {
-                @include text-clamp(3);
-            }
-        }
-        .like-video {
-            position: absolute;
-            right: 10px;
-            bottom: 20%;
-            cursor: pointer;
-            background-color: gray;
-            @include border-radius(20px);
-            height: 45px;
-            width: 45px;
-            @include flexbox;
-            justify-content: center;
-            align-items: center;
-            i {
-                font-size: 22px;
-                color: white;
-            }
-            &.liked {
-                background-color: white;
-                i {
-                    color: gray;
-                }
-            }
-        }
-        .play-pause {
-            position: absolute;
-            top: 46%;
-            left: 46%;
-            transform: translate(-50%, -50%);
-            cursor: pointer;
-            z-index: 10;
-            @include flexbox;
-            justify-content: center;
-            align-items: center;
-            height: 50px;
-            @include border-radius(50%);
-            width: 50px;
-            background-color: gray;
-            opacity: 1;
-            visibility: visible;
-            transition: opacity 0.3s ease-out,transform 0.3s ease-out;
-            transform: scale(1.2);
-            i {
-                color: white;
-                font-size: 25px;
-            }
-            .fa-play {
-                margin-left: 5px;
-            }
-            &.hide-playpause {
-                opacity: 0;
-                visibility: hidden;
-                transform: scale(0.5);
-            }
-        }
+    position: relative;
+    video {
+      max-width: 450px;
+      width: 100%;
+      height: 90vh;
+      object-fit: cover;
+      @include border-radius(20px);
+      margin: auto 0;
     }
+    .video-info {
+      position: absolute;
+      bottom: 20px;
+      padding: 0 16px;
+      @include text-clamp(1);
+      .title-sub-wrapper {
+        @include flexbox;
+        align-items: center;
+        justify-content: flex-start;
+        margin: 0 0 4px 0;
+        h2 {
+          flex: 1;
+          line-height: 100%;
+        }
+        .subscribers {
+          display: inline-block;
+          border: 1px solid transparent;
+          background: rgba(255, 2555, 255, 0.1);
+          @include border-radius(20px);
+          padding: 4px 10px;
+          width: fit-content;
+        }
+      }
+      p {
+        @include text-clamp(3);
+      }
+    }
+    .like-video {
+      position: absolute;
+      right: 10px;
+      bottom: 20%;
+      cursor: pointer;
+      background-color: gray;
+      @include border-radius(20px);
+      height: 45px;
+      width: 45px;
+      @include flexbox;
+      justify-content: center;
+      align-items: center;
+      i {
+        font-size: 22px;
+        color: white;
+      }
+      &.liked {
+        background-color: white;
+        i {
+          color: gray;
+        }
+      }
+    }
+    .play-pause {
+      position: absolute;
+      top: 46%;
+      left: 46%;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+      z-index: 10;
+      @include flexbox;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
+      @include border-radius(50%);
+      width: 50px;
+      background-color: gray;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+      transform: scale(1.2);
+      i {
+        color: white;
+        font-size: 25px;
+      }
+      .fa-play {
+        margin-left: 5px;
+      }
+      &.hide-playpause {
+        opacity: 0;
+        visibility: hidden;
+        transform: scale(0.5);
+      }
+    }
+    .progrss-bar-box {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      height: 4px;
+      width: 96%;
+      background-color: gray;
+      @include border-radius(10px);
+
+      .progress-bar {
+          height: 4px;
+          background-color: red; /* Color of the progress bar */
+          @include border-radius(10px);
+      }
+    }
+  }
 }
