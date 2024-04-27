@@ -20,17 +20,23 @@
   
   .item {
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
-    padding: 20px 24px;
-    padding-right: 48px;
     cursor: pointer;
     border-top: 4px solid #fff;
     border-bottom: 4px solid #fff;
-  
+    display: flex;
+    flex-direction: column;
+    column-gap: 24px;
+    align-items: center;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .heading-wrapper {
     display: grid;
+    width: 100%;
     grid-template-columns: auto 1fr auto;
     column-gap: 24px;
-    row-gap: 32px;
     align-items: center;
+    padding: 20px 24px;
   }
   
   .number {
@@ -46,9 +52,18 @@
   }
   
   .content-box {
-    grid-column: 2 / -1;
-    padding-bottom: 16px;
     line-height: 1.6;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+    padding: 0 24px;
+  }
+
+  .open .content-box {
+    max-height: fit-content;
+    opacity: 1;
+    padding: 0px 24px 24px 24px;
   }
   
   .content-box ul {
